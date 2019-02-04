@@ -1,5 +1,5 @@
 import os
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup 
 
 
 page = os.get('https://timesofindia.indiatimes.com/life-style/books/features/Mahakavi-Bharathiyar-an-inspiration-to-everyone/articleshow/27211482.cms')
