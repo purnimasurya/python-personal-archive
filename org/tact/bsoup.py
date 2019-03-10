@@ -1,10 +1,11 @@
-import os
+import requests
 from bs4 import BeautifulSoup 
 
 
-page = os.get('https://timesofindia.indiatimes.com/life-style/books/features/Mahakavi-Bharathiyar-an-inspiration-to-everyone/articleshow/27211482.cms')
+
+page = requests.get('https://docs.google.com/spreadsheets/d/1EfyD7A4YcdAzTfUO0t3yQ0HawetVF5pefS5pPyGVX4g/edit?usp=sharing')
 soup = BeautifulSoup(page.text, 'html.parser')    
-    
+
 #print(soup)
 
 '''
