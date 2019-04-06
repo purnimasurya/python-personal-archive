@@ -1,0 +1,187 @@
+
+
+Docker Commands:
+
+
+-----------------------------------------------------------------------
+Docker Commands
+
+# docker login with username
+docker login --username=rajacsp
+Ref:
+https://stackoverflow.com/questions/34434231/how-to-specify-username-and-password-upon-docker-push
+
+
+docker —version
+
+docker info
+
+## List Docker images
+
+docker image ls
+
+docker container ls -all
+
+## List Docker containers (running, all, all in quiet mode)
+docker container ls
+docker container ls --all
+docker container ls -aq
+
+# Stop the container
+docker stop orb
+
+
+
+docker ps -a
+docker images
+
+# remove docker container
+docker rm abcd
+
+# remove docker image
+docker rmi abcd
+
+# docker run with detached
+docker run -d abcd
+
+# restart if exists
+docker run --restart=always redis
+
+# docker commit
+docker commit --change "ENV DEBUG true" c3f279d17e0a  svendowideit/testimage:version3
+
+# run the static site
+docker run -d -P seqvence/static-site
+
+# verify the running site
+http://localhost:32769/
+
+Ref:
+https://www.youtube.com/watch?v=lNkVxDSRo7M
+
+# Start the existing container
+docker start <container-name>
+
+# docker run Ubuntu
+docker run -it --name ubuntu ubuntu:xenial bash
+
+
+# start existing ubuntu
+docker start ubuntu
+
+# get into bash
+docker exec -it ubuntu bash
+
+
+# Install OracleDB
+docker run -d -it --name ortest store/oracle/database-enterprise:12.2.0.1
+
+docker exec -it ortest bash -c "source /home/oracle/.bashrc; sqlplus /nolog"
+
+More:
+https://hub.docker.com/u/rajacsp/content/sub-19df1a00-1ae1-4229-8fb6-96dc2b4703bf
+
+
+# Connect from outside container:
+docker run -d -it --name ortest -P store/oracle/database-enterprise:12.2.0.1
+
+# Check Oracle logs in docker
+docker logs ortest
+
+# Start DB as DBA
+ docker exec -it ortest bash -c "source /home/oracle/.bashrc; sqlplus / as sysdba"
+
+
+# dockering Flask
+https://runnable.com/docker/python/dockerize-your-flask-application
+
+# Build docker
+docker build -t my_docker_flask:latest .
+
+# run the docker flask image
+docker run -d -p 4000:5000 rajacsp/flaskmath:2
+
+# Docker basic app
+https://docs.docker.com/get-started/
+
+how to save a docker container as an image?
+https://docs.docker.com/engine/reference/commandline/commit/#commit-a-container-with-new-cmd-and-expose-instructions
+
+# run the public docker
+docker run -p 4000:80 rajacsp/flaskcsp:p2
+
+# Public docker:
+https://hub.docker.com/r/jcdemo/flaskapp/dockerfile
+
+# Clear docker
+Docker system prune -a
+
+
+# Kube pod details
+kubectl get po
+
+kubectl logs bapi-be-6db7bf6f95-bshhk
+
+# Container life cycle
+https://medium.com/@nagarwal/lifecycle-of-docker-container-d2da9f85959
+
+# Docker copy
+docker ps
+
+docker cp foo.txt 72ca2488b353:/foo.txt
+
+docker cp 72ca2488b353:/foo.txt foo.txt
+
+https://www.shellhacks.com/docker-cp-command-copy-file-to-from-container/
+
+Docker commit and push
+docker pull ubuntu
+docker run --name csp-lamp-server -it ubuntu:latest bash
+apt-get update
+apt-get install lamp-server^
+docker commit -m "Added LAMP Server" -a "NAME" csp-lamp-server USER/test-lamp-server:latest
+docker login
+docker push rajacsp/csp-lamp-server
+https://www.techrepublic.com/article/how-to-create-a-docker-image-and-push-it-to-docker-hub/
+
+
+Create simple Flask Image:
+http://containertutorials.com/docker-compose/flask-simple-app.html
+
+Docker run vs exec:
+https://medium.com/the-code-review/docker-run-vs-exec-deep-dive-into-their-differences-19a1041735a3
+
+Docker logs:
+Docker logs <container_id>
+
+
+
+docker run -d -it --name myflask -p 5002:5000 rajacsp/my_docker_flask:latest
+
+
+
+-----------------------------------------------------------------------
+Docker fresh build and deploy:
+
+cd /Users/str-kwml0011/projects/docker-flask-reverse-string
+
+docker build -t flask-reverse-string:latest .
+
+# check your docker image
+docker images
+
+# check container
+docker ps
+
+# Run it
+docker run -d -p 5000:5000 flask-reverse-string:latest
+
+# Test
+curl http://127.0.0.1:5000/
+
+# tagging
+docker tag flask-reverse-string rajacsp/flask-reverse-string
+
+Test:
+http://127.0.0.1:5000/reverse?name=Raja
+-----------------------------------------------------------------------

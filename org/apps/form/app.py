@@ -59,7 +59,7 @@ def result():
 
 def read_songs():
 
-    file_Name = 'Users/purnimasurya/tact/python-personal-archive/FeelI'
+    file_Name = '/Users/purnimasurya/tact/python-personal-archive/FeelI'
 
     fileObject = open(file_Name,'rb')  
 
@@ -86,7 +86,7 @@ def add_song(youtube_link, emotion, hint):
 
     file_Name = "FeelI"
 
-    fileObject = open(file_Name,'w') 
+    fileObject = open(file_Name,'wb') 
 
     # this writes the object a to the
     # file named 'testfile'
