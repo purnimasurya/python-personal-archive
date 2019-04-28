@@ -24,23 +24,27 @@ import psycopg2
         name (unique)
         state
 '''
+def get_cursor():
+    connection = psycopg2.connect(user = "stars",
+                                    password = "fivestars",
+                                    host = "10.0.0.3",
+                                    port = "5432",
+                                    database = "stars")
+
+    cursor = connection.cursor()
+        
+    # Print PostgreSQL Connection properties
+    print ( connection.get_dsn_parameters(),"\n")
+
+    return cursor, connection
 
 def add_row():
     pass
 
 def read_all_rows():
     try:
-        connection = psycopg2.connect(user = "stars",
-                                    password = "fivestars",
-                                    host = "10.0.0.3",
-                                    port = "5432",
-                                    database = "stars")
 
-        cursor = connection.cursor()
-        
-        # Print PostgreSQL Connection properties
-        print ( connection.get_dsn_parameters(),"\n")
-        
+        cursor, connection = get_cursor()
         # Print PostgreSQL version
         cursor.execute("SELECT * FROM CITY;")
         records = cursor.fetchmany(5)
@@ -62,21 +66,13 @@ def read_all_rows():
             if(connection):
                 cursor.close()
                 connection.close()
-                print("PostgreSQL connection is closed")
+                #print("PostgreSQL connection is closed")
 
 def read_single_row():
     try:
-        connection = psycopg2.connect(user = "stars",
-                                    password = "fivestars",
-                                    host = "10.0.0.3",
-                                    port = "5432",
-                                    database = "stars")
+        
+        cursor, connection = get_cursor()
 
-        cursor = connection.cursor()
-        
-        # Print PostgreSQL Connection properties
-        print ( connection.get_dsn_parameters(),"\n")
-        
         # Print PostgreSQL version
         cursor.execute("SELECT * FROM CITY;")
         records = cursor.fetchone()
@@ -102,7 +98,7 @@ def read_single_row():
             if(connection):
                 cursor.close()
                 connection.close()
-                print("PostgreSQL connection is closed")
+                #print("PostgreSQL connection is closed")
 
 def update_row():
     pass
