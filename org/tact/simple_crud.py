@@ -13,13 +13,22 @@ Source:
     
 '''
 
-# Import necessary modules
-import psycopg2 
+#
+#  Import necessary modules
+import psycopg2  
 
 
-def startpy():
+'''
+    City
+        id
+        name (unique)
+        state
+'''
 
+def add_row():
+    pass
 
+def read_all_rows():
     try:
         connection = psycopg2.connect(user = "stars",
                                     password = "fivestars",
@@ -33,9 +42,14 @@ def startpy():
         print ( connection.get_dsn_parameters(),"\n")
         
         # Print PostgreSQL version
-        cursor.execute("SELECT version();")
-        record = cursor.fetchone()
-        print("You are connected to - ", record,"\n")
+        cursor.execute("SELECT * FROM CITY;")
+        records = cursor.fetchall()
+        #print("You are connected to - ", record,"\n")
+        print (type(records))
+
+        for i in records:
+            print(i)
+            
     except (Exception, psycopg2.Error) as error :
         print ("Error while connecting to PostgreSQL", error)
     finally:
@@ -44,6 +58,18 @@ def startpy():
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
+
+def read_single_row():
+    pass
+
+def update_row():
+    pass
+
+def delete_row():
+    pass
+
+def startpy():
+    read_all_rows()
 
 
 if __name__ == '__main__':
