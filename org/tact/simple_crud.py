@@ -47,9 +47,15 @@ def read_all_rows():
         #print("You are connected to - ", record,"\n")
         print (type(records))
 
-        for i in records:
-            print(i)
-            
+        for row in records:
+            #print(i)
+            #print(type(i))
+            city = row[1]
+            state = row[2]
+            country = row[3]
+            print(city, state, country)
+
+        print("\n")
     except (Exception, psycopg2.Error) as error :
         print ("Error while connecting to PostgreSQL", error)
     finally:
