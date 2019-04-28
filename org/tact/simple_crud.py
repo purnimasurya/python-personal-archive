@@ -43,7 +43,7 @@ def read_all_rows():
         
         # Print PostgreSQL version
         cursor.execute("SELECT * FROM CITY;")
-        records = cursor.fetchall()
+        records = cursor.fetchmany(5)
         #print("You are connected to - ", record,"\n")
         print (type(records))
 
@@ -55,7 +55,6 @@ def read_all_rows():
             country = row[3]
             print(city, state, country)
 
-        print("\n")
     except (Exception, psycopg2.Error) as error :
         print ("Error while connecting to PostgreSQL", error)
     finally:
